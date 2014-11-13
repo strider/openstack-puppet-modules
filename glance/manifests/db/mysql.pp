@@ -8,7 +8,7 @@ class glance::db::mysql(
   $user          = 'glance',
   $host          = '127.0.0.1',
   $allowed_hosts = undef,
-  $charset       = 'latin1',
+  $charset       = 'utf8',
   $cluster_id    = 'localzone'
 ) {
 
