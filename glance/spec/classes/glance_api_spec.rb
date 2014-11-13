@@ -32,8 +32,7 @@ describe 'glance::api' do
       :keystone_password     => 'ChangeMe',
       :sql_idle_timeout      => '3600',
       :sql_connection        => 'sqlite:///var/lib/glance/glance.sqlite',
-      :show_image_direct_url => false,
-      :notifier_strategy     => 'noop'
+      :show_image_direct_url => false
     }
   end
 
@@ -89,8 +88,7 @@ describe 'glance::api' do
           'bind_port',
           'registry_host',
           'registry_port',
-          'show_image_direct_url',
-          'notifier_strategy'
+          'show_image_direct_url'
         ].each do |config|
           should contain_glance_api_config("DEFAULT/#{config}").with_value(param_hash[config.intern])
         end
