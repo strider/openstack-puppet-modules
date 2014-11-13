@@ -23,7 +23,7 @@ describe 'nova::db::mysql' do
       it { should contain_mysql__db('nova').with(
         :user        => 'nova',
         :password    => 'qwerty',
-        :charset     => 'latin1',
+        :charset     => 'utf8',
         :require     => "Class[Mysql::Config]"
       )}
     end
@@ -50,7 +50,7 @@ describe 'nova::db::mysql' do
       it { should contain_mysql__db('nova').with(
         :user        => 'nova',
         :password    => 'qwerty',
-        :charset     => 'latin1',
+        :charset     => 'utf8',
         :require     => "Class[Mysql::Config]"
       )}
     end

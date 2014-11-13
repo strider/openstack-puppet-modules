@@ -6,7 +6,7 @@ class nova::db::mysql(
   $dbname        = 'nova',
   $user          = 'nova',
   $host          = '127.0.0.1',
-  $charset       = 'latin1',
+  $charset       = 'utf8',
   $allowed_hosts = undef,
   $cluster_id    = 'localzone'
 ) {
