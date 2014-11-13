@@ -252,8 +252,6 @@ class neutron::server (
 
   neutron_config {
     'DEFAULT/api_workers':             value => $api_workers;
-    'DEFAULT/agent_down_time':         value => $agent_down_time;
-    'DEFAULT/report_interval':         value => $report_interval;
     'DEFAULT/router_scheduler_driver': value => $router_scheduler_driver;
     'database/connection':             value => $database_connection_real;
     'database/idle_timeout':           value => $database_idle_timeout_real;
