@@ -35,7 +35,7 @@ class keystone::db::mysql(
   $dbname        = 'keystone',
   $user          = 'keystone',
   $host          = '127.0.0.1',
-  $charset       = 'latin1',
+  $charset       = 'utf8',
   $allowed_hosts = undef
 ) {
 

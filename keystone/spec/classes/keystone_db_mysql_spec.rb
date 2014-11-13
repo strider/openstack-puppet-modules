@@ -18,7 +18,7 @@ describe 'keystone::db::mysql' do
       'password'      => 'keystone_default_password',
       'dbname'        => 'keystone',
       'user'          => 'keystone',
-      'charset'       => 'latin1',
+      'charset'       => 'utf8',
       'host'          => '127.0.0.1',
       'allowed_hosts' => ['127.0.0.%', '192.168.1.%']
     }
