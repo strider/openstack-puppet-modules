@@ -29,7 +29,7 @@ class heat::db::mysql(
   $user          = 'heat',
   $host          = 'localhost',
   $allowed_hosts = undef,
-  $charset       = 'latin1',
+  $charset       = 'utf8',
 ) {
 
   validate_string($password)
