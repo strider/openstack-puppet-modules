@@ -150,6 +150,10 @@ mod 'redis',
   :commit => 'd72af9ab3c2911b6dc18c5cc12e700630ebdcfb2',
   :git => 'https://github.com/arioch/puppet-redis.git'
 
+mod 'remote',
+  :commit => '35cc5571593d21408d625bd8ee35217345ec502a',
+  :git => 'https://github.com/paramite/puppet-remote.git'
+
 mod 'rsync',
   :commit => '357d51f3a6a22bc3da842736176c3510e507b4fb',
   :git => 'https://github.com/puppetlabs/puppetlabs-rsync.git'
