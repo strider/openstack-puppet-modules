@@ -106,7 +106,7 @@ class neutron::agents::ml2::ovs (
   $enable_distributed_routing = false,
 ) {
 
-  include neutron::params
+  include ::neutron::params
   require vswitch::ovs
 
   if $enable_tunneling and ! $local_ip {
@@ -199,8 +199,8 @@ class neutron::agents::ml2::ovs (
 
   if $::neutron::params::ovs_agent_package {
     package { 'neutron-ovs-agent':
-      ensure  => $package_ensure,
-      name    => $::neutron::params::ovs_agent_package,
+      ensure => $package_ensure,
+      name   => $::neutron::params::ovs_agent_package,
     }
   } else {
     # Some platforms (RedHat) do not provide a separate
@@ -208,14 +208,22 @@ class neutron::agents::ml2::ovs (
     # the ovs agent is provided by the neutron ovs plugin package.
     if ! defined(Package['neutron-ovs-agent']) {
       package { 'neutron-ovs-agent':
-        ensure  => $package_ensure,
-        name    => $::neutron::params::ovs_server_package,
-      }
+        ensure => $package_ensure,
+        name   => $::neutron::params::ovs_server_package,
+      } ->
+      # https://bugzilla.redhat.com/show_bug.cgi?id=1087647
+      # Causes init script for agent to load the old ovs file
+      # instead of the ml2 config file.
+      file { '/etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini':
+        ensure => link,
+        target => '/etc/neutron/plugin.ini'
+      } ~> Service<| title == 'neutron-ovs-agent-service' |>
     }
   }
 
   if $enabled {
     $service_ensure = 'running'
+    Neutron_config<||> ~> Service['neutron-ovs-agent-service']
   } else {
     $service_ensure = 'stopped'
   }
